@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        body{
+            background-color: rgb(66, 65, 65);
+        }
+        #clock{
+            height: 27px;
+            width: 300px;
+            background-color: rgb(204, 200, 200);
+            text-align: center;
+            padding: 20px 0px;
+            margin: 150px auto;
+            border-radius: 5px;
+            box-shadow: 0px 4px 15px 0px black ;
+        }
+        #time{
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+    <div id="clock">
+        <h2 id="time"></h2>
+        <small id="period"></small>
+    </div>
+    <script>
+       
+        setInterval(function(){
+            let date = new Date();
+            let hours = date.getHours();
+            let minutes = date.getMinutes();
+            let seconds = date.getSeconds();
+            let periods = (hours<12) ?"AM" : "PM"
+            
+            if(hours>12){
+                hours = hours - 12;
+            }
+            if(hours==0){
+                hours = 12;
+            }
+            if(hours<10){
+                hours = "0"+hours
+            }
+            if(minutes<10){
+                minutes = "0"+minutes;
+            }
+            if(seconds<10){
+                seconds = "0"+ seconds;
+            }
+
+
+           let fulltime = `${hours}:${minutes}:${seconds}`
+           document.getElementById("time").innerText = fulltime;
+           document.getElementById("period").innerText = periods;
+
+        }, 1000)
+
+       
+        
+    </script>
+</body>
+</html>
